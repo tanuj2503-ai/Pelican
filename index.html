@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <!-- CRITICAL FIX: Corrected 'width-device-width' to 'width=device-width' --><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelican Confectioners Pvt. Ltd. - Quality Confections Since 2004</title>
+    
+    <!-- Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS (Animate On Scroll) Library --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Swiper.js for Sliders --><link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    
+    <!-- Lucide Icons --><script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff; 
+            color: #333333; /* Dark Charcoal Text */
+        }
+        
+        /* New color palette based on the logo */
+        .bg-brand-primary { background-color: #a4cc3a; }
+        .bg-brand-dark { background-color: #2a2a2a; }
+        .bg-brand-light { background-color: #f7f7f7; }
+        .text-brand-primary { color: #a4cc3a; }
+        .border-brand-primary { border-color: #a4cc3a; }
+        .ring-brand-primary { --tw-ring-color: #a4cc3a; }
+
+
+        /* Hero section background */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/f7f7f7/cccccc?text=Pelican+Confectioners');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Parallax effect for "Why Choose Us" */
+        .parallax-bg {
+            background-image: url('https://placehold.co/1920x800/a4cc3a/ffffff?text=Fresh+Ingredients');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Sticky Navbar Styling */
+        .nav-sticky {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+        .nav-sticky a {
+            color: #333333;
+        }
+         .nav-sticky a:hover {
+            color: #a4cc3a;
+        }
+        .nav-sticky .nav-active {
+             color: #a4cc3a !important;
+        }
+        .nav-sticky #mobile-menu-button {
+             color: #333333;
+        }
+
+
+        /* Active Nav Link Styling (Scrollspy) */
+        .nav-active {
+            color: #a4cc3a;
+            font-weight: 600;
+        }
+        
+        /* Product Card Hover Effect */
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+        
+        .product-overlay {
+             transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Swiper Styles for Testimonials */
+        .testimonial-slider .swiper-button-next,
+        .testimonial-slider .swiper-button-prev {
+            color: #a4cc3a;
+        }
+         .testimonial-slider .swiper-pagination-bullet-active {
+            background-color: #a4cc3a;
+        }
+
+        /* RESPONSIVENESS FIX: Disable parallax on mobile for performance/compatibility */
+        @media (max-width: 768px) {
+            .parallax-bg {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body class="leading-normal">
+
+    <!-- Header & Navbar --><header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo: Reduced size on mobile --><a href="#home" class="text-2xl sm:text-3xl font-extrabold text-white tracking-wider uppercase">
+                PELICAN
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 font-medium">
+                <a href="#home" class="nav-link text-white hover:text-brand-primary transition-colors duration-300">Home</a>
+                <a href="#about" class="nav-link text-white hover:text-brand-primary transition-colors duration-300">About</a>
+                <a href="#products" class="nav-link text-white hover:text-brand-primary transition-colors duration-300">Products</a>
+                <a href="#team" class="nav-link text-white hover:text-brand-primary transition-colors duration-300">Team</a>
+                <a href="#gallery" class="nav-link text-white hover:text-brand-primary transition-colors duration-300">Gallery</a>
+                <a href="#testimonials" class="nav-link text-white hover:text-brand-primary transition-colors duration-300">Testimonials</a>
+                <a href="#contact" class="nav-link text-white hover:text-brand-primary transition-colors duration-300">Contact</a>
+            </div>
+             <!-- Mobile Menu Button --><button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none">
+                <i data-lucide="menu" class="h-6 w-6"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu --><div id="mobile-menu" class="hidden lg:hidden bg-white shadow-md">
+             <a href="#home" class="nav-link block text-gray-800 text-center py-3 hover:bg-brand-light hover:text-brand-primary transition-colors">Home</a>
+             <a href="#about" class="nav-link block text-gray-800 text-center py-3 hover:bg-brand-light hover:text-brand-primary transition-colors">About</a>
+             <a href="#products" class="nav-link block text-gray-800 text-center py-3 hover:bg-brand-light hover:text-brand-primary transition-colors">Products</a>
+             <a href="#team" class="nav-link block text-gray-800 text-center py-3 hover:bg-brand-light hover:text-brand-primary transition-colors">Team</a>
+             <a href="#gallery" class="nav-link block text-gray-800 text-center py-3 hover:bg-brand-light hover:text-brand-primary transition-colors">Gallery</a>
+             <a href="#testimonials" class="nav-link block text-gray-800 text-center py-3 hover:bg-brand-light hover:text-brand-primary transition-colors">Testimonials</a>
+             <a href="#contact" class="nav-link block text-gray-800 text-center py-3 hover:bg-brand-light hover:text-brand-primary transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section --><section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white px-4">
+            <div class="text-center" data-aos="fade-up">
+                <div class="flex justify-center items-center mb-6">
+                    <!-- === LOGO UPDATED === -->
+                    <!-- Replaced the old SVG with the new logo image -->
+                    <img src="image Background Removed.png" alt="Pelican Confectioners Logo" class="h-20 w-20 sm:h-24 sm:w-24 rounded-2xl shadow-lg border-4 border-white">
+                    <!-- === END OF UPDATE === -->
+                </div>
+                <!-- Responsive Text Sizes --><h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight uppercase">Pelican Confectioners</h1>
+                <p class="mt-4 text-lg sm:text-xl md:text-2xl font-light">Sweetening Moments Since 2004</p>
+                <!-- Responsive Button --><a href="#products" class="mt-8 inline-block bg-brand-primary text-brand-dark font-bold py-3 px-6 text-base sm:text-lg sm:px-8 rounded-full hover:bg-lime-300 transition-all duration-300 shadow-lg">
+                    Explore Our Range
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. About Us Section --><!-- Responsive Padding --><section id="about" class="py-16 sm:py-20 md:py-24 bg-brand-light">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-right">
+                        <!-- Responsive Heading --><h2 class="text-3xl sm:text-4xl font-bold mb-4">Our Story</h2>
+                        <span class="inline-block w-20 h-1 bg-brand-primary mb-6"></span>
+                        <p class="mb-4 text-gray-700">Founded on February 24, 2004, Pelican Confectioners Pvt. Ltd. began with a simple vision: to create high-quality, delicious confections that bring joy to every occasion. Our core activity involves the processing and preserving of fruit, vegetables, and edible nuts, which form the base of our unique recipes.</p>
+                        <p class="text-gray-700">From a humble start, we've grown into a trusted name, known for our commitment to quality ingredients and innovative flavors. Our mission is to craft moments of happiness through our wide range of treats, maintaining the highest standards of production and customer satisfaction.</p>
+                    </div>
+                    <div data-aos="fade-left" class="relative">
+                        <!-- 
+                          REPLACED IMAGE WITH VIDEO:
+                          The local path '/Users/tanujsharmaomkar/Desktop/project/pelican/Factory_Video_Production.mov'
+                          will NOT work. A website cannot access your local files for security reasons.
+
+                          You MUST upload your video to a hosting service (like YouTube, Vimeo) or your web server
+                          and replace the 'src' path below with your video's public URL.
+                        --><video 
+                            class="rounded-lg shadow-2xl w-full" 
+                            controls 
+                            playsinline
+                            src="Factory_Video_Production.mov"
+                            autoplay
+                            aria-label="Factory Video">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Our Products Section --><section id="products" class="py-16 sm:py-20 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4">Our Delectable Products</h2>
+                    <span class="inline-block w-20 h-1 bg-brand-primary mb-6"></span>
+                    <p class="max-w-2xl mx-auto text-gray-600">Explore our curated collection of handcrafted treats, made with love and the finest ingredients.</p>
+                </div>
+
+                <!-- Filter Buttons: flex-wrap ensures they stack on mobile --><div class="flex justify-center flex-wrap gap-2 md:gap-4 mb-10" data-aos="fade-up">
+                    <button class="filter-btn active bg-brand-dark text-white py-2 px-5 sm:px-6 rounded-full font-semibold text-sm sm:text-base" data-filter="all">All</button>
+                    <button class="filter-btn bg-gray-200 text-gray-700 py-2 px-5 sm:px-6 rounded-full font-semibold text-sm sm:text-base" data-filter="chocolates">Chocolates</button>
+                    <button class="filter-btn bg-gray-200 text-gray-700 py-2 px-5 sm:px-6 rounded-full font-semibold text-sm sm:text-base" data-filter="candies">Candies</button>
+                    <button class="filter-btn bg-gray-200 text-gray-700 py-2 px-5 sm:px-6 rounded-full font-semibold text-sm sm:text-base" data-filter="toffees">Toffees</button>
+                    <button class="filter-btn bg-gray-200 text-gray-700 py-2 px-5 sm:px-6 rounded-full font-semibold text-sm sm:text-base" data-filter="shakes">Shakes</button>
+                    <button class="filter-btn bg-gray-200 text-gray-700 py-2 px-5 sm:px-6 rounded-full font-semibold text-sm sm:text-base" data-filter="sweets">Sweets</button>
+                </div>
+
+                <!-- Product Grid: Already responsive with grid-cols-1 default --><div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <!-- Product Cards will be here --></div>
+            </div>
+        </section>
+        
+        <!-- 4. Our Team Section --><section id="team" class="py-16 sm:py-20 md:py-24 bg-brand-light">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4">Leadership Team</h2>
+                     <span class="inline-block w-20 h-1 bg-brand-primary mb-6"></span>
+                    <p class="max-w-2xl mx-auto text-gray-600">The passionate people behind Pelican's sweet success.</p>
+                </div>
+                <!-- Team Grid: Already responsive --><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+                    <!-- Team Member Card --><div class="team-card text-center" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://placehold.co/300x300/2a2a2a/ffffff?text=A.B.K" alt="Managing Director" class="w-48 h-48 object-cover rounded-full mx-auto shadow-lg border-4 border-white">
+                        <h3 class="text-xl font-bold mt-4">Anil Babubhai Koradia</h3>
+                        <p class="text-brand-primary font-semibold">Managing Director</p>
+                        <p class="text-gray-600 mt-2 text-sm max-w-xs mx-auto">Guiding the company's vision with strategic leadership and a passion for excellence.</p>
+                    </div>
+                    <!-- Team Member Card --><div class="team-card text-center" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://placehold.co/300x300/a4cc3a/ffffff?text=R.S.P" alt="Director" class="w-48 h-48 object-cover rounded-full mx-auto shadow-lg border-4 border-white">
+                        <h3 class="text-xl font-bold mt-4">Rajesh Shantilal Panjwani</h3>
+                        <p class="text-brand-primary font-semibold">Director</p>
+                        <p class="text-gray-600 mt-2 text-sm max-w-xs mx-auto">Overseeing operations and ensuring every product meets our highest standards.</p>
+                    </div>
+                     <!-- Team Member Card --><div class="team-card text-center" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://placehold.co/300x300/cccccc/2a2a2a?text=S.R" alt="Director" class="w-48 h-48 object-cover rounded-full mx-auto shadow-lg border-4 border-white">
+                        <h3 class="text-xl font-bold mt-4">Sanjay Rawal</h3>
+                        <p class="text-brand-primary font-semibold">Director</p>
+                        <p class="text-gray-600 mt-2 text-sm max-w-xs mx-auto">Driving market growth and fostering valuable partnerships for the brand.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Why Choose Us Section --><section id="why-us" class="py-16 sm:py-20 md:py-24 parallax-bg text-white relative">
+            <div class="container mx-auto px-6 relative z-10">
+                 <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4">Why Choose Pelican?</h2>
+                     <span class="inline-block w-20 h-1 bg-brand-primary mb-6"></span>
+                    <p class="max-w-2xl mx-auto text-gray-300">Our promise of excellence in every bite.</p>
+                </div>
+                <!-- Grid: Stacks to 1 column on mobile, 2 on md, 4 on lg --><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <div class="bg-white/90 p-6 rounded-lg h-full shadow-lg hover:shadow-2xl transition-shadow border border-white/20">
+                            <i data-lucide="gem" class="mx-auto h-12 w-12 text-brand-primary"></i>
+                            <h3 class="font-bold text-xl mt-4 text-gray-700">100% Quality</h3>
+                            <p class="mt-2 text-gray-700">Using only the finest, ethically sourced ingredients for superior taste.</p>
+                        </div>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="200">
+                         <div class="bg-white/90 p-6 rounded-lg h-full shadow-lg hover:shadow-2xl transition-shadow border border-white/20">
+                             <i data-lucide="map" class="mx-auto h-12 w-12 text-brand-primary"></i>
+                            <h3 class="font-bold text-xl mt-4 text-gray-700">Wide Distribution</h3>
+                            <p class="mt-2 text-gray-700">Our products are available across the nation through a robust network.</p>
+                        </div>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="300">
+                        <div class="bg-white/90 p-6 rounded-lg h-full shadow-lg hover:shadow-2xl transition-shadow border border-white/20">
+                            <i data-lucide="lightbulb" class="mx-auto h-12 w-12 text-brand-primary"></i>
+                            <h3 class="font-bold text-xl mt-4 text-gray-700">Innovative Flavors</h3>
+                            <p class="mt-2 text-gray-700">Constantly experimenting to bring you new and exciting tastes.</p>
+                        </div>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="400">
+                        <div class="bg-white/90 p-6 rounded-lg h-full shadow-lg hover:shadow-2xl transition-shadow border border-white/20">
+                            <i data-lucide="heart" class="mx-auto h-12 w-12 text-brand-primary"></i>
+                            <h3 class="font-bold text-xl mt-4 text-gray-700">Customer Trust</h3>
+                            <p class="mt-2 text-gray-700">Years of trust built on consistent quality and service.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Gallery Section --><section id="gallery" class="py-16 sm:py-20 md:py-24">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4">Sweet Moments Gallery</h2>
+                     <span class="inline-block w-20 h-1 bg-brand-primary mb-6"></span>
+                    <p class="max-w-2xl mx-auto text-gray-600">A glimpse into the world of Pelican Confectioners.</p>
+                </div>
+                <!-- Gallery Grid: 2 cols on mobile, 4 on md --><div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="grid gap-4">
+                        <div data-aos="fade-up"><img class="h-auto max-w-full rounded-lg shadow-md" src="https://placehold.co/500x700/a4cc3a/ffffff?text=Demo Photo(ai generated)" alt="Product"></div>
+                        <div data-aos="fade-up"><img class="h-auto max-w-full rounded-lg shadow-md" src="image.png" alt="Factory"></div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div data-aos="fade-up"><img class="h-auto max-w-full rounded-lg shadow-md" src="Gemini_Generated_Image_mapnubmapnubmapn.png" alt="Process"></div>
+                        <div data-aos="fade-up"><img class="h-auto max-w-full rounded-lg shadow-md" src="Gemini_Generated_Image_cfxuk9cfxuk9cfxu.png" alt="Candies"></div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div data-aos="fade-up"><img class="h-auto max-w-full rounded-lg shadow-md" src="Gemini_Generated_Image_mapnubmapnubmapn (1).png" alt="Packaging"></div>
+                        <div data-aos="fade-up"><img class="h-auto max-w-full rounded-lg shadow-md" src="Gemini_Generated_Image_fhx02zfhx02zfhx0 (5).png" alt="Chocolates"></div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div data-aos="fade-up"><img class="h-auto max-w-full rounded-lg shadow-md" src="Gemini_Generated_Image_mapnubmapnubmapn (2).png" alt="Joy"></div>
+                        <div data-aos="fade-up"><img class="h-auto max-w-full rounded-lg shadow-md" src="Gemini_Generated_Image_mapnubmapnubmapn (3).png" alt="Team"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Testimonials Section --><section id="testimonials" class="py-16 sm:py-20 md:py-24 bg-brand-light">
+             <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4">What Our Partners Say</h2>
+                    <span class="inline-block w-20 h-1 bg-brand-primary mb-6"></span>
+                    <p class="max-w-2xl mx-auto text-gray-600">We take pride in the relationships we've built.</p>
+                </div>
+                <!-- Swiper: Already responsive --><div class="swiper testimonial-slider" data-aos="fade-up">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 --><div class="swiper-slide">
+                            <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg text-center max-w-2xl mx-auto">
+                                <img src="https://placehold.co/100x100/a4cc3a/ffffff?text=D" alt="Distributor" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-brand-primary">
+                                <p class="text-gray-600 italic mb-4">"Pelican's products are a bestseller in our stores. The quality is consistent, and our customers, especially kids, absolutely love the toffees!"</p>
+                                <h4 class="font-bold text-lg">Rajesh Kumar</h4>
+                                <p class="text-sm text-gray-500">Distributor, Mumbai</p>
+                            </div>
+                        </div>
+                        <!-- Slide 2 --><div class="swiper-slide">
+                            <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg text-center max-w-2xl mx-auto">
+                                <img src="https://placehold.co/100x100/2a2a2a/ffffff?text=C" alt="Customer" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-brand-primary">
+                                <p class="text-gray-600 italic mb-4">"The best chocolates I've had in a long time. The innovative fruit and nut combinations are simply delicious. Highly recommended!"</p>
+                                <h4 class="font-bold text-lg">Anjali Patel</h4>
+                                <p class="text-sm text-gray-500">Loyal Customer</p>
+                            </div>
+                        </div>
+                        <!-- Slide 3 --><div class="swiper-slide">
+                            <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg text-center max-w-2xl mx-auto">
+                                <img src="https://placehold.co/100x100/cccccc/2a2a2a?text=S" alt="Supplier" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-brand-primary">
+                                <p class="text-gray-600 italic mb-4">"Working with Pelican Confectioners has been a pleasure. They are professional, reliable, and truly passionate about their craft."</p>
+                                <h4 class="font-bold text-lg">Vikram Singh</h4>
+                                <p class="text-sm text-gray-500">Supplier</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Pagination --><div class="swiper-pagination mt-8"></div>
+                    <!-- Add Navigation (hidden on mobile by default with swiper) --><div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Contact Us Section --><section id="contact" class="py-16 sm:py-20 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4">Get In Touch</h2>
+                     <span class="inline-block w-20 h-1 bg-brand-primary mb-6"></span>
+                    <p class="max-w-2xl mx-auto text-gray-600">We'd love to hear from you. For inquiries, partnerships, or just to say hello!</p>
+                </div>
+                <!-- Grid: Stacks to 1 column on mobile --><div class="grid lg:grid-cols-2 gap-12">
+                    <div data-aos="fade-right">
+                        <h3 class="text-2xl font-semibold mb-4">Contact Details</h3>
+                        <div class="space-y-4 text-gray-700">
+                            <p class="flex items-start"><i data-lucide="map-pin" class="h-5 w-5 mr-3 mt-1 text-brand-primary flex-shrink-0"></i><span>Pelican Confectioners Pvt. Ltd.,<br>CG Road, Ahmedabad, Gujarat, India - 382330</span></p>
+                            <p class="flex items-center"><i data-lucide="phone" class="h-5 w-5 mr-3 text-brand-primary flex-shrink-0"></i><span>+91 9898644971</span></p>
+                            <p class="flex items-center"><i data-lucide="mail" class="h-5 w-5 mr-3 text-brand-primary flex-shrink-0"></i><span>info@pelicanconfectioners.com</span></p>
+                        </div>
+                        <h3 class="text-2xl font-semibold mt-8 mb-4">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-500 hover:text-brand-primary"><i data-lucide="facebook" class="h-7 w-7"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-brand-primary"><i data-lucide="instagram" class="h-7 w-7"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-brand-primary"><i data-lucide="linkedin" class="h-7 w-7"></i></a>
+                        </div>
+                    </div>
+                     <div data-aos="fade-left">
+                        <form action="#" method="POST" class="space-y-4">
+                            <div>
+                                <label for="name" class="sr-only">Your Name</label>
+                                <input type="text" id="name" placeholder="Your Name" class="w-full px-4 py-3 bg-brand-light rounded-lg focus:outline-none focus:ring-2 ring-brand-primary">
+                            </div>
+                            <div>
+                                <label for="email" class="sr-only">Your Email</label>
+                                <input type="email" id="email" placeholder="Your Email" class="w-full px-4 py-3 bg-brand-light rounded-lg focus:outline-none focus:ring-2 ring-brand-primary">
+                            </div>
+                            <div>
+                                <label for="message" class="sr-only">Your Message</label>
+                                <textarea id="message" placeholder="Your Message" rows="5" class="w-full px-4 py-3 bg-brand-light rounded-lg focus:outline-none focus:ring-2 ring-brand-primary"></textarea>
+                            </div>
+                             <button type="submit" class="w-full bg-brand-dark text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-black transition-all duration-300 shadow-lg">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                 <!-- Map: Responsive height --><div class="mt-12" data-aos="fade-up">
+                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!m12!1m3!1d235013.74842137158!2d72.4149257962489!3d23.02047410058968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1678886369527!5m2!1sen!2sin" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-lg shadow-md"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer --><footer class="bg-brand-dark text-white py-10">
+        <div class="container mx-auto px-6 text-center">
+             <a href="#home" class="text-2xl sm:text-3xl font-extrabold tracking-wider uppercase">
+                PELICAN
+            </a>
+            <!-- Footer Links: Wrap on mobile --><div class="flex justify-center flex-wrap gap-4 md:gap-6 my-6 text-sm sm:text-base">
+                <a href="#about" class="hover:text-brand-primary transition-colors">About</a>
+                <a href="#products" class="hover:text-brand-primary transition-colors">Products</a>
+                <a href="#team" class="hover:text-brand-primary transition-colors">Team</a>
+                <a href="#gallery" class="hover:text-brand-primary transition-colors">Gallery</a>
+                <a href="#testimonials" class="hover:text-brand-primary transition-colors">Testimonials</a>
+                <a href="#contact" class="hover:text-brand-primary transition-colors">Contact</a>
+            </div>
+            <div class="flex justify-center space-x-4 mb-6">
+                 <a href="#" class="hover:text-brand-primary"><i data-lucide="facebook" class="h-6 w-6"></i></a>
+                 <a href="#" classs="hover:text-brand-primary"><i data-lucide="instagram" class="h-6 w-6"></i></a>
+                 <a href="#" class="hover:text-brand-primary"><i data-lucide="linkedin" class="h-6 w-6"></i></a>
+            </div>
+            <p class="text-gray-400 text-sm">&copy; <span id="year"></span> Pelican Confectioners Pvt. Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Scripts --><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            disable: 'mobile' // Optionally disable AOS on mobile for performance
+        });
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // --- Navbar Logic ---
+        const header = document.getElementById('header');
+        const navLinksDesktop = document.querySelectorAll('#header nav a');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('nav-sticky');
+            } else {
+                header.classList.remove('nav-sticky');
+            }
+        });
+        
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Toggle icon
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.setAttribute('data-lucide', 'menu');
+            } else {
+                // CORRECTION: Set attribute correctly
+                icon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons(); // Re-render icon
+        });
+        
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.querySelector('i').setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        // --- Scrollspy Logic ---
+        const sections = document.querySelectorAll('main section'); // Target sections in main
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = 'home'; // Default to home
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) { // Adjust offset as needed
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('nav-active');
+                // Check for both desktop and mobile links
+                const href = link.getAttribute('href');
+                if (href && href.substring(1) === current) {
+                    link.classList.add('nav-active');
+                }
+            });
+            
+             // Ensure home is active when at the top
+            if (window.pageYOffset < 150) {
+                 navLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href && href === '#home') {
+                        link.classList.add('nav-active');
+                    } else if (href && href !== '#home') {
+                         link.classList.remove('nav-active');
+                    }
+                });
+            }
+        });
+        
+        // --- Testimonials Slider (Swiper.js) ---
+        const swiper = new Swiper('.testimonial-slider', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            // Responsive breakpoints
+            breakpoints: {
+                // when window width is >= 640px
+                640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                // when window width is >= 768px
+                768: {
+                    slidesPerView: 1,
+                    spaceBetween: 30
+                }
+            }
+        });
+
+        // --- Product Data and Filtering ---
+        // FIX: Wrap all DOM manipulation in DOMContentLoaded listener
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const products = [
+                { name: 'Milk Shake', category: 'shakes', desc: 'A creamy and delicious milk flavored shake.', img: 'Gemini_Generated_Image_fhx02zfhx02zfhx0.png' },
+                { name: 'Fruit Shots', category: 'candies', desc: 'Assorted fruit-flavored chewy candies.', img: 'Gemini_Generated_Image_fhx02zfhx02zfhx0 (1).png' },
+                { name: 'Choco Full', category: 'toffees', desc: 'Classic chocolate flavored chewy toffee. .', img: 'Gemini_Generated_Image_fhx02zfhx02zfhx0 (2).png' },
+                { name: 'Pan Shahi', category: 'toffees', desc: 'Best Mouth Freshner Pan Shahi Candy', img: 'Gemini_Generated_Image_cfxuk9cfxuk9cfxu.png' },
+                { name: 'Coconut Desire', category: 'toffees', desc: 'Exotic coconut flavored toffee, a tropical delight.', img: 'Gemini_Generated_Image_fhx02zfhx02zfhx0 (3).png' },
+                { name: 'DOODH Elaichi', category: 'candies', desc: 'Fragrant cardamom (elaichi) flavored refreshing candy.', img: 'Gemini_Generated_Image_fhx02zfhx02zfhx0 (4).png' },
+            
+                { name: 'Kesar Penda', category: 'sweets', desc: 'Traditional Indian sweet with saffron (kesar) and cardamom.', img: 'Gemini_Generated_Image_fhx02zfhx02zfhx0 (5).png' }
+            ];
+
+            const productGrid = document.getElementById('product-grid');
+            
+            if (productGrid) {
+                const displayProducts = (filter = 'all') => {
+                    productGrid.innerHTML = '';
+                    const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
+                    
+                    filteredProducts.forEach((product, index) => {
+                        const productCard = `
+                            <div class="product-item" data-category="${product.category}" data-aos="fade-up" data-aos-delay="${(index % 4 + 1) * 100}">
+                                <div class="product-card bg-white rounded-lg overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-2xl relative border">
+                                    <div class="overflow-hidden">
+                                        <img src="${product.img}" alt="${product.name}" class="w-full h-56 object-cover transition-transform duration-300" onerror="this.src='https://placehold.co/400x300/cccccc/2a2a2a?text=Image+Not+Found'">
+                                    </div>
+                                    <div class="p-5">
+                                        <h3 class="text-xl font-bold">${product.name}</h3>
+                                        <p class="text-gray-600 mt-2 text-sm">${product.desc}</p>
+                                    </div>
+                                    <div class="product-overlay absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                                        <a href="#" class="text-white border-2 border-brand-primary py-2 px-5 rounded-full hover:bg-brand-primary hover:text-brand-dark font-semibold transition-all">Know More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        productGrid.innerHTML += productCard;
+                    });
+                };
+
+                const filterButtons = document.querySelectorAll('.filter-btn');
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        filterButtons.forEach(btn => {
+                            btn.classList.remove('active', 'bg-brand-dark', 'text-white');
+                            btn.classList.add('bg-gray-200', 'text-gray-700');
+                        });
+                        button.classList.add('active', 'bg-brand-dark', 'text-white');
+                        button.classList.remove('bg-gray-200', 'text-gray-700');
+                        
+                        const filter = button.getAttribute('data-filter');
+                        displayProducts(filter);
+                    });
+                });
+                
+                // Initial product display
+                displayProducts();
+            } else {
+                console.error("Product grid element not found!");
+            }
+
+            // Add onerror handler for all images just in case
+            document.querySelectorAll('img').forEach(img => {
+                if (!img.onerror) {
+                    img.onerror = function() {
+                        const w = this.width || 400;
+                        const h = this.height || 300;
+                        this.src = `https://placehold.co/${w}x${h}/cccccc/2a2a2a?text=Image+Missing`;
+                    };
+                }
+            });
+        }); // End of DOMContentLoaded listener
+
+    </script>
+</body>
+</html>
